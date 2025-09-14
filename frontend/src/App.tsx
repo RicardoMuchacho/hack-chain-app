@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import NFTCreator from "./pages/NFTCreator";
 import { RegisterUser } from "./pages/RegisterUser";
+import Students from "./pages/Students";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/nft-creator" element={<NFTCreator />} />
           <Route path="/register/user" element={<RegisterUser />} />
+          <Route path="/students" element={<Students />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

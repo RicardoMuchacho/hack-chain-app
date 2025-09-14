@@ -12,6 +12,7 @@ const Navbar = () => {
     { name: 'Certificates', href: '#certificates' },
     { name: 'Community', href: '#community' },
     { name: 'DAO', href: '#dao' },
+    { name: 'Students', href: '/students', isRoute: true },
   ];
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -50,14 +51,24 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="flex items-center space-x-8">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => handleSmoothScroll(e, item.href)}
-                  className="text-foreground/80 hover:text-foreground transition-colors duration-200 cursor-pointer"
-                >
-                  {item.name}
-                </a>
+                item.isRoute ? (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="text-foreground/80 hover:text-foreground transition-colors duration-200 cursor-pointer"
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => handleSmoothScroll(e, item.href)}
+                    className="text-foreground/80 hover:text-foreground transition-colors duration-200 cursor-pointer"
+                  >
+                    {item.name}
+                  </a>
+                )
               ))}
             </div>
           </div>
@@ -98,14 +109,25 @@ const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 glass rounded-lg mt-2">
               {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => handleSmoothScroll(e, item.href)}
-                  className="block px-3 py-2 text-foreground/80 hover:text-foreground transition-colors duration-200 cursor-pointer"
-                >
-                  {item.name}
-                </a>
+                item.isRoute ? (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className="block px-3 py-2 text-foreground/80 hover:text-foreground transition-colors duration-200 cursor-pointer"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => handleSmoothScroll(e, item.href)}
+                    className="block px-3 py-2 text-foreground/80 hover:text-foreground transition-colors duration-200 cursor-pointer"
+                  >
+                    {item.name}
+                  </a>
+                )
               ))}
               
               {/* Mobile Action Buttons */}
